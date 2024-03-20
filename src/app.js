@@ -5,33 +5,30 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-function createExcuse() {
-  // Who they are
-  let who = ["The dog", "My grandma", "His turtle", "My bird"];
-  // What they did
-  let action = ["ate", "peed", "crushed", "broke"];
-  // What are we avoiding
-  let what = ["my homework", "the keys", "the car"];
-  // When
-  let when = [
-    "before the class",
-    "right on time",
-    "when I finished",
-    "during my lunch",
-    "while I was praying"
-  ];
+function createDomain() {
+  let pronoun = ["the", "our"];
+  let adj = ["great", "big"];
+  let noun = ["jogger", "racoon"];
 
-  const partOne = who[Math.floor(Math.random() * who.length)];
+  let allDomains = [];
 
-  const partTwo = action[Math.floor(Math.random() * action.length)];
-
-  const partThree = what[Math.floor(Math.random() * what.length)];
-
-  const partFour = when[Math.floor(Math.random() * when.length)];
-
-  let completeSentence = `${partOne} ${partTwo} ${partThree} ${partFour}`;
-
-  return completeSentence;
+  for (let i = 0; i < pronoun.length; i++) {
+    for (let j = 0; j < adj.length; j++) {
+      for (let k = 0; k < noun.length; k++) {
+        let completeSentence = `${pronoun[i]}${adj[j]}${noun[k]}.com`;
+        allDomains.push(completeSentence);
+      }
+    }
+  }
+  return allDomains;
 }
 
-document.getElementById("excuse").innerHTML = createExcuse();
+const domains = createDomain();
+
+const domainsContainer = document.getElementById("domains");
+
+domains.forEach(domain => {
+  const domainElement = document.createElement("p");
+  domainElement.textContent = domain;
+  domainsContainer.appendChild(domainElement);
+});
